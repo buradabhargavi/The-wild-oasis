@@ -67,7 +67,7 @@ function CabinRow({ cabin }) {
   });
   return (
     <TableRow>
-      <Img src={image} />
+      <Img src={image} alt={name} />
       <Cabin>{name}</Cabin>
       <div>Fits upto {maxCapacity}</div>
       <Price>{formatCurrency(regularPrice)}</Price>
