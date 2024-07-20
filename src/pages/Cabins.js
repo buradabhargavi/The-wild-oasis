@@ -3,6 +3,7 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import { getCabins } from "../services/apicabin";
 import CabinTable from "../features/cabins/CabinTable";
+import CabinsTableOperation from "../features/cabins/CabinsTableOperation";
 
 function Cabins() {
   useEffect(function () {
@@ -12,7 +13,7 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>filter/sort</p>
+        <CabinsTableOperation />
       </Row>
       <Row>
         <CabinTable></CabinTable>

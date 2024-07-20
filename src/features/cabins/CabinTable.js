@@ -7,6 +7,7 @@ import Button from "../../ui/Button";
 import { useQuery } from "@tanstack/react-query";
 import CabinRow from "./CabinRow";
 import CreateCabinForm from "./CreateCabinForm";
+import { useSearchParams } from "react-router-dom";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -34,6 +35,8 @@ const TableHeader = styled.header`
 
 function CabinTable() {
   const [showForm, setShowForm] = useState(false);
+  const [searchParams] = useSearchParams();
+  //  console.log(searchParams);
   const {
     isLoading,
     data: cabins,
@@ -42,7 +45,18 @@ function CabinTable() {
     queryKey: ["cabins"],
     queryFn: getCabins,
   });
+
+  const filterVal = searchParams.get("discount") || "all";
+
+  let filterCabins;
+  if (filterVal === "all") filterCabins = cabins;
+  if (filterVal === "withDiscount")
+    filterCabins = cabins.filter((cabin) => cabin.discount > 0);
+  if (filterVal === "NoDiscount")
+    filterCabins = cabins.filter((cabin) => cabin.discount === 0);
+
   if (isLoading) return <Spinner />;
+
   return (
     <>
       <Table role="table">
@@ -54,7 +68,7 @@ function CabinTable() {
           <div>Discount</div>
           <div></div>
         </TableHeader>
-        {cabins.map((cabin) => (
+        {filterCabins.map((cabin) => (
           <CabinRow cabin={cabin} key={cabin.id}></CabinRow>
         ))}
       </Table>
