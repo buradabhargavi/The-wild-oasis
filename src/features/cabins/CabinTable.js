@@ -47,6 +47,7 @@ function CabinTable() {
   });
 
   if (isLoading) return <Spinner />;
+
   //filter
 
   const filterVal = searchParams.get("discount") || "all";
@@ -78,7 +79,7 @@ function CabinTable() {
           <div>Discount</div>
           <div></div>
         </TableHeader>
-        {/*   {filterCabins.map((cabin) => ( */}
+        {/*   {filterCabins.map((cabin) => (  */}
         {sortedCabins.map((cabin) => (
           <CabinRow cabin={cabin} key={cabin.id}></CabinRow>
         ))}
