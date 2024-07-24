@@ -18,10 +18,10 @@ function Bookings() {
 
         <BookingTableOperations />
       </Row>
-      <Row>
+      {/*  <Row>
         <Button onClick={() => handleClick()}>Book a cabin</Button>
         {isOpen && <CreateBookingForm />}
-      </Row>
+      </Row> */}
       <Row>
         <BookingTable />
       </Row>

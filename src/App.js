@@ -4,6 +4,7 @@ import GlobalStyle from "./styles/GlobalStyles";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
+import Booking from "./pages/Booking";
 import Cabins from "./pages/Cabins";
 import Users from "./pages/Users";
 import Settings from "./pages/Settings";
@@ -31,6 +32,7 @@ function App() {
             {/*  <Route index element={<Dashboard />}></Route> */}
             <Route path="dashboard" element={<Dashboard />}></Route>
             <Route path="bookings" element={<Bookings />}></Route>
+            <Route path="bookings/:bookingId" element={<Booking />}></Route>
             <Route path="cabins" element={<Cabins />}></Route>
             <Route path="users" element={<Users />}></Route>
             <Route path="settings" element={<Settings />}></Route>
